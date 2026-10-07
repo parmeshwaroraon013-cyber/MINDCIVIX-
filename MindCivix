@@ -1,0 +1,48 @@
+'use client';
+
+import React from 'react';
+import Link from 'next/link';
+import { LayoutDashboard, FileText, FolderTree, Star, Users, Bell, ShieldAlert } from 'lucide-react';
+
+export default function AdminLayout({ children }: { children: React.ReactNode }) {
+  return (
+    <div className="min-h-screen bg-[#05070a] flex flex-col md:flex-row">
+      {/* Admin Sidebar Navigation */}
+      <aside className="w-full md:w-64 bg-[#0d1117] border-r border-[#1f293d] p-6 flex flex-col justify-between">
+        <div className="space-y-6">
+          <div className="flex items-center gap-2 text-[#00f0ff] font-bold text-xl border-b border-[#1f293d] pb-4">
+            <ShieldAlert className="w-6 h-6" /> Admin Hub
+          </div>
+          <nav className="space-y-2">
+            <Link href="/admin" className="flex items-center gap-3 px-3 py-2 rounded-lg text-gray-300 hover:bg-[#1f293d] hover:text-[#00f0ff] transition text-sm">
+              <LayoutDashboard className="w-4 h-4" /> Overview
+            </Link>
+            <Link href="/admin/articles" className="flex items-center gap-3 px-3 py-2 rounded-lg text-gray-300 hover:bg-[#1f293d] hover:text-[#00f0ff] transition text-sm">
+              <FileText className="w-4 h-4" /> Articles
+            </Link>
+            <Link href="/admin/categories" className="flex items-center gap-3 px-3 py-2 rounded-lg text-gray-300 hover:bg-[#1f293d] hover:text-[#00f0ff] transition text-sm">
+              <FolderTree className="w-4 h-4" /> Categories
+            </Link>
+            <Link href="/admin/featured" className="flex items-center gap-3 px-3 py-2 rounded-lg text-gray-300 hover:bg-[#1f293d] hover:text-[#00f0ff] transition text-sm">
+              <Star className="w-4 h-4" /> Featured
+            </Link>
+            <Link href="/admin/users" className="flex items-center gap-3 px-3 py-2 rounded-lg text-gray-300 hover:bg-[#1f293d] hover:text-[#00f0ff] transition text-sm">
+              <Users className="w-4 h-4" /> Users
+            </Link>
+            <Link href="/admin/notifications" className="flex items-center gap-3 px-3 py-2 rounded-lg text-gray-300 hover:bg-[#1f293d] hover:text-[#00f0ff] transition text-sm">
+              <Bell className="w-4 h-4" /> Notifications
+            </Link>
+          </nav>
+        </div>
+        <div className="border-t border-[#1f293d] pt-4 text-xs text-gray-500">
+          MindCivix System Control v1.0
+        </div>
+      </aside>
+
+      {/* Main Admin Viewport */}
+      <main className="flex-1 p-6 md:p-10 overflow-y-auto">
+        {children}
+      </main>
+    </div>
+  );
+}
